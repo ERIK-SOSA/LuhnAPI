@@ -1,0 +1,21 @@
+### Solicitud POST ruta principal
+GET http://localhost:3000 HTTP/1.1
+
+### Solicitud POST para validar tarjeta de credito
+### TARJETA VALIDA ###
+POST http://localhost:3000/validartarjeta HTTP/1.1
+content-type: application/json
+
+{
+  "creditCardNumber": "4859486027545818"
+}
+
+
+### Solicitud POST para validar tarjeta de credito
+### TARJETA INVALIDA ###
+POST http://localhost:3000/validartarjeta HTTP/1.1
+content-type: application/json
+
+{
+  "creditCardNumber": "4859486027545817"
+}

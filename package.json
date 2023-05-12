@@ -1,0 +1,25 @@
+{
+  "name": "luhnapi",
+  "version": "1.0.0",
+  "description": "API algoritmo de Luhn",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erik Sosa",
+  "license": "ISC",
+  "bin": {
+    "mi-comando": "./bin/mi-comando.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "credit-card-validator": "^1.0.8",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
