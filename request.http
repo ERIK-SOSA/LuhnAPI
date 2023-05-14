@@ -17,5 +17,15 @@ POST http://localhost:3000/validartarjeta HTTP/1.1
 content-type: application/json
 
 {
-  "creditCardNumber": "4859486027545817"
+  "creditCardNumber": "4986676341828877"
+}
+
+
+### Solicitud POST para validar tarjeta de credito
+### TARJETA INVALIDA ###
+POST http://localhost:3000/validartarjeta HTTP/1.1
+content-type: application/json
+
+{
+  "creditCardNumber": ""
 }

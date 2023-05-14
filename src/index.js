@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config()
 const mongoose = require('mongoose');
 const Number = require('./models/number');
-const dotenv = require('dotenv');
+const { config } = require('./config/config')
 const cors = require('cors');
 
 const app = express();
@@ -16,11 +16,12 @@ app.use(bodyParser.json());
 app.use(cors({origin: '*'}))
 
 // DB Connection
-const uri = "mongodb+srv://SosaErik:GN29lAngDzUrxBoJ@produccion.dcziz.mongodb.net/CreditCardLuhn"
-// const uri = "mongodb+srv://<username>:<password>@produccion.dcziz.mongodb.net/<database>"
+// const uri = "mongodb+srv://SosaErik:GN29lAngDzUrxBoJ@produccion.dcziz.mongodb.net/CreditCardLuhn"
+const uri = `mongodb+srv://${config.dbUser}:${config.dbPassword}@produccion.dcziz.mongodb.net/${config.dbName}`
 
-app.listen(PORT, () => {
-  console.log('Servidor corriendo en el puerto',PORT);
+
+app.listen(config.port, () => {
+  console.log('Servidor corriendo en el puerto',config.port);
 })
 
 
@@ -92,6 +93,10 @@ app.post('/validartarjeta', (req, res) => {
 });
 
 function esNumeroTarjetaValido(numero) {
+  console.log("Numero >> ",numero)
+  if (numero === ""){
+    return false;
+  }
   const digitos = numero.toString().split('');
   const suma = digitos.reduce((acumulador, digito, indice) => {
     let valor = parseInt(digito, 10);
@@ -103,5 +108,6 @@ function esNumeroTarjetaValido(numero) {
     }
     return acumulador + valor;
   }, 0);
+  console.log(suma % 10 === 0)
   return suma % 10 === 0;
 }
