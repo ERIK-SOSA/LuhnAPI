@@ -12,7 +12,7 @@ COPY --chown=node:node package*.json ./
 USER node
 COPY --chown=node:node ./src /app
 RUN npm install
-EXPOSE 80
+EXPOSE 4000
 CMD ["node", "index.js"]
 
 FROM base as dev
